@@ -11,21 +11,31 @@ import SwiftUI
 struct SwiftUILifeCycleApp: App {
     
     @Environment(\.scenePhase) var scenePhare
+
     
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(LifeCycleViewModel())
         }
         .onChange(of: scenePhare) { newScenePhare in
             switch newScenePhare {
             case .background:
-                print("Background")
+                let message = "Background"
+                LifeCycleViewModel.message = message
+                print(message)
             case .inactive:
-                print("Inactive")
+                let message = "Inactive"
+                LifeCycleViewModel.message = message
+                print(message)
             case .active:
-                print("Active")
+                let message = "Active"
+                LifeCycleViewModel.message = message
+                print(message)
             default:
-                print("Unknown")
+                let message = "Unknown"
+                LifeCycleViewModel.message = message
+                print(message)
             }
         }
     }
